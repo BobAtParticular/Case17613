@@ -1,0 +1,71 @@
+﻿2016-03-14 10:33:05.531 INFO  NServiceBus.Unicast.Transport.TransportReceiver Failed to process message
+System.InvalidOperationException: Could not convert document TheSaga/8f2391fb-9d4b-4058-8364-a5c900ad706d to entity of type System.Object ---> Raven.Imports.Newtonsoft.Json.JsonSerializationException: Could not read value for property: Value ---> System.OverflowException: Value was either too large or too small for a Decimal.
+   at System.Decimal..ctor(Double value)
+   at System.Double.System.IConvertible.ToDecimal(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Raven.Abstractions.Json.JsonNumericConverter`1.ReadJson(JsonReader reader, Type objectType, Object existingValue, JsonSerializer serializer) in c:\Builds\RavenDB-Stable-2.5\Raven.Abstractions\Json\JsonNumericConverter.cs:line 36
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.DeserializeConvertable(JsonConverter converter, JsonReader reader, Type objectType, Object existingValue) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 1378
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 688
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 1593
+   --- End of inner exception stack trace ---
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 1602
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 368
+   at Raven.Imports.Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs:line 161
+   at Raven.Imports.Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType) in c:\Builds\RavenDB-Stable-2.5\Imports\Newtonsoft.Json\Src\Newtonsoft.Json\JsonSerializer.cs:line 565
+   at Raven.Client.Connection.DocumentConventionJsonExtensions.Deserialize(RavenJObject self, Type type, DocumentConvention convention) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Connection\DocumentConventionJsonExtensions.cs:line 30
+   at Raven.Client.Document.InMemoryDocumentSessionOperations.ConvertToEntity(Type entityType, String id, RavenJObject documentFound, RavenJObject metadata) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\InMemoryDocumentSessionOperations.cs:line 480
+   --- End of inner exception stack trace ---
+   at Raven.Client.Document.InMemoryDocumentSessionOperations.ConvertToEntity(Type entityType, String id, RavenJObject documentFound, RavenJObject metadata) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\InMemoryDocumentSessionOperations.cs:line 513
+   at Raven.Client.Document.InMemoryDocumentSessionOperations.TrackEntity(Type entityType, String key, RavenJObject document, RavenJObject metadata, Boolean noTracking) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\InMemoryDocumentSessionOperations.cs:line 420
+   at Raven.Client.Document.InMemoryDocumentSessionOperations.TrackEntity(Type entityType, JsonDocument documentFound) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\InMemoryDocumentSessionOperations.cs:line 389
+   at Raven.Client.Document.SessionOperations.MultiLoadOperation.Complete[T]() in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\SessionOperations\MultiLoadOperation.cs:line 64
+   at Raven.Client.Document.MultiLoaderWithInclude`1.Load[TResult](String id) in c:\Builds\RavenDB-Stable-2.5\Raven.Client.Lightweight\Document\MultiLoaderWithInclude.cs:line 182
+   at NServiceBus.SagaPersisters.RavenDB.SagaPersister.GetByUniqueProperty[T](String property, Object value) in C:\BuildAgent\work\c4d62ce02b983878\src\NServiceBus.RavenDB\SagaPersister\SagaPersister.cs:line 121
+   at NServiceBus.SagaPersisters.RavenDB.SagaPersister.Get[T](String property, Object value) in C:\BuildAgent\work\c4d62ce02b983878\src\NServiceBus.RavenDB\SagaPersister\SagaPersister.cs:line 84
+   at NServiceBus.Sagas.PropertySagaFinder`1.Find(IBuilder builder, SagaFinderDefinition finderDefinition, LogicalMessage message) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Sagas\PropertySagaFinder.cs:line 32
+   at NServiceBus.SagaPersistenceBehavior.TryLoadSagaEntity(SagaMetadata metadata, LogicalMessage message) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Sagas\SagaPersistenceBehavior.cs:line 248
+   at NServiceBus.SagaPersistenceBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Sagas\SagaPersistenceBehavior.cs:line 48
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.RavenDB.SessionManagement.OpenSessionBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\c4d62ce02b983878\src\NServiceBus.RavenDB\SessionManagement\OpenSessionBehavior.cs:line 22
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.SetCurrentMessageBeingHandledBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Behaviors\SetCurrentMessageBeingHandledBehavior.cs:line 17
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.LoadHandlersBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Behaviors\LoadHandlersBehavior.cs:line 45
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.InvokeSagaNotFoundBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Behaviors\InvokeSagaNotFoundBehavior.cs:line 17
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.ExecuteLogicalMessagesBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Messages\ExecuteLogicalMessagesBehavior.cs:line 24
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.UnitOfWorkBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\UnitOfWork\UnitOfWorkBehavior.cs:line 42
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.ChildContainerBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Behaviors\ChildContainerBehavior.cs:line 17
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.ProcessingStatisticsBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Monitoring\ProcessingStatisticsBehavior.cs:line 23
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.<>c__DisplayClass4_0.<InvokeNext>b__0() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 95
+   at NServiceBus.AuditBehavior.Invoke(IncomingContext context, Action next) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Audit\AuditBehavior.cs:line 20
+   at NServiceBus.BehaviorChain`1.InvokeNext(T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 107
+   at NServiceBus.BehaviorChain`1.Invoke() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\BehaviorChain.cs:line 52
+   at NServiceBus.Pipeline.PipelineExecutor.Execute[T](BehaviorChain`1 pipelineAction, T context) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Pipeline\PipelineExecutor.cs:line 129
+   at NServiceBus.Unicast.Transport.TransportReceiver.OnTransportMessageReceived(TransportMessage msg) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Transport\TransportReceiver.cs:line 413
+   at NServiceBus.Unicast.Transport.TransportReceiver.ProcessMessage(TransportMessage message) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Transport\TransportReceiver.cs:line 344
+   at NServiceBus.Unicast.Transport.TransportReceiver.TryProcess(TransportMessage message) in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Unicast\Transport\TransportReceiver.cs:line 230
+   at NServiceBus.Transports.Msmq.MsmqDequeueStrategy.Action() in C:\BuildAgent\work\3206e2123f54fce4\src\NServiceBus.Core\Transports\Msmq\MsmqDequeueStrategy.cs:line 266
