@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case17613.Client", "Case176
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case17613.Messages", "Case17613.Messages\Case17613.Messages.csproj", "{A607EDA3-61BE-4856-9BD6-C3C9BB63AE61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case17613.RavenDbTest", "Case17613.RavenDbTest\Case17613.RavenDbTest.csproj", "{73585181-BFCA-4FEC-A242-FFA87A26AC84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A607EDA3-61BE-4856-9BD6-C3C9BB63AE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A607EDA3-61BE-4856-9BD6-C3C9BB63AE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A607EDA3-61BE-4856-9BD6-C3C9BB63AE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73585181-BFCA-4FEC-A242-FFA87A26AC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73585181-BFCA-4FEC-A242-FFA87A26AC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73585181-BFCA-4FEC-A242-FFA87A26AC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73585181-BFCA-4FEC-A242-FFA87A26AC84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
