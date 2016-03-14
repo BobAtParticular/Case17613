@@ -1,0 +1,19 @@
+POST http://ravendb2dot5:8080/databases/Case17613.Host/bulk_docs HTTP/1.1
+Accept-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Raven-Client-Version: 2.5.0.0
+Raven-Transaction-Information: 901c33f0-e661-41c8-9d57-813aa23537fe:69, 00:01:00
+Host: ravendb2dot5:8080
+Expect: 100-continue
+Content-Length: 1005
+
+﻿[{"Key":"TheSaga/e022a9ef-7c20-4d4c-987d-a5c900cf5f14","Method":"PUT","Document":{"SagaId":"3bdcbd7d-640e-4558-9675-619b564ac91d","Value":-79228162514264337593543950335.0,"Originator":null,"OriginalMessageId":"e15dd63a-7dd4-4052-ab9a-a5c900cf5ed1"},"Metadata":{"Raven-Entity-Name":"TheSaga","NServiceBus-UniqueValue":"3bdcbd7d-640e-4558-9675-619b564ac91d","Raven-Clr-Type":"Case17613.Host.Handlers.TheSagaData, Case17613.Host"},"AdditionalData":null,"Etag":"00000000-0000-0000-0000-000000000000"},{"Key":"Case17613.Host.Handlers.TheSagaData/SagaId/69f7819c-e5ff-a4cb-3f76-25bccb228d51","Method":"PUT","Document":{"SagaId":"e022a9ef-7c20-4d4c-987d-a5c900cf5f14","UniqueValue":"3bdcbd7d-640e-4558-9675-619b564ac91d","SagaDocId":"TheSaga/e022a9ef-7c20-4d4c-987d-a5c900cf5f14"},"Metadata":{"Raven-Entity-Name":"SagaUniqueIdentity","Raven-Clr-Type":"NServiceBus.RavenDB.Persistence.SagaPersister.SagaUniqueIdentity, NServiceBus.RavenDB"},"AdditionalData":null,"Etag":"00000000-0000-0000-0000-000000000000"}]
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-HTTPAPI/2.0
+Raven-Server-Build: 2996
+Temp-Request-Time: 1
+Date: Mon, 14 Mar 2016 19:35:00 GMT
+Content-Length: 718
+
+[{"Etag":"03000000-0000-0001-0000-00000000002E","Method":"PUT","Key":"TheSaga/e022a9ef-7c20-4d4c-987d-a5c900cf5f14","Metadata":{"Raven-Entity-Name":"TheSaga","NServiceBus-UniqueValue":"3bdcbd7d-640e-4558-9675-619b564ac91d","Raven-Clr-Type":"Case17613.Host.Handlers.TheSagaData, Case17613.Host"},"AdditionalData":null,"PatchResult":null,"Deleted":null},{"Etag":"03000000-0000-0001-0000-00000000002F","Method":"PUT","Key":"Case17613.Host.Handlers.TheSagaData/SagaId/69f7819c-e5ff-a4cb-3f76-25bccb228d51","Metadata":{"Raven-Entity-Name":"SagaUniqueIdentity","Raven-Clr-Type":"NServiceBus.RavenDB.Persistence.SagaPersister.SagaUniqueIdentity, NServiceBus.RavenDB"},"AdditionalData":null,"PatchResult":null,"Deleted":null}]
