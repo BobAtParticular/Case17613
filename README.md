@@ -7,7 +7,7 @@ Reproduction for support case 17613
 
 ##RavenDb Version
 
-* 2.5.2956
+* 2.5.2956 (Customer version, 2.5.2996 was used for reproduction)
 
 ##Endpoint Configuration
 
